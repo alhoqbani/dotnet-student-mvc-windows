@@ -1,0 +1,56 @@
+﻿@model IEnumerable<StudentMVC.Models.Student>
+@{
+    Layout = "_Layout";
+}
+
+
+@section header {
+
+}
+
+<section class="container my-5">
+    <div class="d-flex justify-content-between my-3 p-1">
+        <div class="text-center" style="font-size:1.5rem">Students List</div>
+        <a href="@Url.Action("Create", "Students")" class="btn btn-outline-primary">طالب جديد</a>
+    </div>
+    <div class="row">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">City</th>
+                        <th scope="col">&nbsp;</th>
+                        <th scope="col">&nbsp;</th>
+                        <th scope="col">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{int i = 1;}
+                    @foreach (var student in Model)
+                    {
+                        <tr>
+                            <th scope="row">@i</th>
+                            <td>@student.Name</td>
+                            <td>@student.City</td>
+                            <td>
+                                <a href="@Url.Action("Show", "Students", new { Id = student.Id })"
+                                   class="btn btn-outline-success">تفاصيل</a>
+                            </td>
+                            <td><a href="@Url.Action("Edit", "Students", new { id = student.Id } )" class="btn btn-outline-warning btn-block">تعديل</a></td>
+                            <td><button class="btn btn-outline-danger delete_from_list" data-delete-id="@student.Id">حذف <i class="fas fa fa-spinner fa-spin d-none"></i></button></td>
+
+                        </tr>
+                        i++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,44 @@
+﻿@* Add the model to the view to use it *@
+@model StudentMVC.Models.Student
+
+<div class="card mb-5" style="width: 100%;">
+    <div class="card-header h3">
+        @Model.Name
+    <div class="h6 float-right">Date added: @Model.CreatedAt.ToShortDateString()</div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="card-body">
+    <div>
+        <img class="rounded-circle mx-auto d-block" src="@Model.Avatar()" />
+    </div>
+    <hr />
+    <div class="card-text">
+        <div class="row">
+            <div class="col-md-6">
+                <strong>Name</strong><p>@Model.Name</p>
+                <strong>Email</strong><p>@Model.Email</p>
+                <strong>ِCity</strong><p>@Model.City</p>
+            </div>
+            <div class="col-md-6 text-md-right">
+                <strong>Age</strong><p>@Model.Age</p>
+                <strong>Gender</strong><p>@Model.Gender</p>
+                <strong>Enrolled</strong><p>@Model.Enrolled</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="card-footer">
+    <div class="row">
+        <div class="col-md-6">
+            <a href="@Url.Action("Edit", "Students", new { id = Model.Id } )" class="btn btn-outline-warning btn-block">تعديل</a>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-outline-danger btn-block" id="delete_from_show_page" data-delete-id="@Model.Id"><i class="fas fa fa-spinner fa-spin d-none"></i> حذف </button>
+        </div>
+    </div>
+</div>
+
+</div>
